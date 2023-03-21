@@ -1,38 +1,58 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+	justify-content: center;
+	background-color: rgb(91, 91, 91);
+	width: 100%;
+	height: 700px;
 }
 
-.App-link {
-  color: #61dafb;
+.signIn{
+	width:400px ;
+	height: 400px;
+	justify-content: center;
+	margin: 150px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	border-radius: 10px;
+	background-color: rgb(176, 176, 176);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Btn{
+	cursor: pointer;
+	margin: 10px;
+	width: 30%;
+	height: 25px;
+	background-color: rgb(47, 156, 252);
+	border-radius: 10px;
+	border: none;
 }
+
+.nameInput{
+	width: 70%;
+	height: 30px;
+	border-radius: 10px;
+}
+
+.Card{
+	width: 90px;
+	height: 150px;
+	background-color: beige;
+	border: solid 1px black;
+	margin: 5px;
+	border-radius: 5px;
+}
+
+.title{
+	color:aliceblue;
+}
+
+.Game{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+
+
