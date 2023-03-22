@@ -16,31 +16,42 @@ function App() {
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
 
+
 	const createPlayer = (userName) => {
 		setPlayer({ playerName: userName, win: 0, lose: 0, games: 1 })
 		createGame()
 	}
 	const createGame = () => {
+
 		let cardDeck = []
 
-		for (let i = 0, cardValue = 1; i <= 52; i++) {
-			cardDeck.push(cardValue)
-			if (i % 4 === 0) {
-				cardValue++
+		let rankArr = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace']
+		let suitArr = ['spades', 'hearts', 'clubs', 'diamonds']
+		// let values = 1
+		for (let i = 0; i < suitArr.length; i++) {
+			for (let j = 0; j < rankArr.length; j++) {
+				cardDeck.push({
+					value: j + 1,
+					suit: suitArr[i],
+					rank: rankArr[j],
+					image: `./card_Deck/${rankArr[j]}_of_${suitArr[i]}.png`
+				})
 			}
+
 		}
+
 		let rnd
 		let comDeck = []
 		let playDeck = []
-	
+
 		for (let i = 0; i < 26; i++) {
 			rnd = Math.floor(Math.random() * cardDeck.length)
 			comDeck.push(cardDeck[rnd])
-			cardDeck.splice(rnd,1)
+			cardDeck.splice(rnd, 1)
 
 			rnd = Math.floor(Math.random() * cardDeck.length)
 			playDeck.push(cardDeck[rnd])
-			cardDeck.splice(rnd,1)
+			cardDeck.splice(rnd, 1)
 
 		}
 
@@ -59,7 +70,7 @@ function App() {
 
 		}
 		else if (switchPages === 1) {
-			return <GamePage setSwitchPages={setSwitchPages} player={player} compDeck ={compDeck} playerDeck={playerDeck} />
+			return <GamePage setSwitchPages={setSwitchPages} player={player} compDeck={compDeck} playerDeck={playerDeck} />
 
 		}
 		else if (switchPages === 3) {

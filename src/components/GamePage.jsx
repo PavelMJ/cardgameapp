@@ -9,11 +9,15 @@ export default function GamePage(props) {
 	const [playerPoint, setPlayerPoint] = useState(0)
 
 	const progres = () => {
-		if (props.compDeck[index] > props.playerDeck[index]) {
+
+		console.log(props.compDeck[index].value);
+		console.log(props.playerDeck[index].value);
+
+		if (props.compDeck[index].value > props.playerDeck[index].value) {
 			setcomPoint(comPoint+1)
 
 		}
-		else if (props.compDeck[index] < props.playerDeck[index]) {
+		else if (props.compDeck[index].value < props.playerDeck[index].value) {
 			setPlayerPoint(playerPoint+1)
 		}
 		else {
@@ -33,19 +37,22 @@ export default function GamePage(props) {
 
 	}
 
-	const sendCardToComp = () => {
-		return props.compDeck[index]
-	}
+	// const sendCardToComp = () => {
+	// 	return props.compDeck[index]
+	// }
 
-	const sendCardToPlayer = () => {
-		return props.playerDeck[index]
-	}
+	// const sendCardToPlayer = () => {
+	// 	return props.playerDeck[index]
+	// }
 
 	return (
 		<div className='Game'>
 			<h1 className='title' >COMPUTER</h1>
-			<Card chosenCard={sendCardToComp} />
-			<Card chosenCard={sendCardToPlayer} />
+			<div className='compPoints title'>points {comPoint}</div>
+
+			<Card chosenCard={props.compDeck[index]} />
+			<Card chosenCard={props.playerDeck[index]} />
+			<div className='playerPoints title'>points {playerPoint}</div>
 			<h1 className='title'>{props.player.playerName}</h1>
 			<button onClick={progres} className='next Btn'>NEXT</button>
 
