@@ -1,0 +1,26 @@
+[
+	{
+		 "playerName":"Frodo",
+		 "win":40,
+		 "lose":1,
+		 "games":41
+	},
+	{
+		 "playerName":"Samuel",
+		 "win":8,
+		 "lose":9,
+		 "games":17
+	},
+	{
+		 "playerName":"Deny",
+		 "win":15,
+		 "lose":3,
+		 "games":18
+	},
+	{
+		 "playerName":"Moshe",
+		 "win":7,
+		 "lose":2,
+		 "games":9
+	}
+]

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
+// import data from '/data.json'
 import './App.css';
 
 import SignIn from './components/SignIn';
@@ -15,12 +16,23 @@ function App() {
 	const [player, setPlayer] = useState({})
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
-
+	const [allPlayers, setAllPlayers] = useState([
+])
+	useEffect(()=>{
+		fetch('/data.json')
+		.then((responce)=>responce.json())
+		.then((data)=>setAllPlayers(data))
+		.catch((error)=> console.error(error))
+	},[])
 
 	const createPlayer = (userName) => {
 		setPlayer({ playerName: userName, win: 0, lose: 0, games: 1 })
 		createGame()
 	}
+	// useEffect(()=>{
+	// 	setAllPlayers(data)
+	// },[allPlayers])
+
 	const createGame = () => {
 
 		let cardDeck = []
@@ -66,7 +78,7 @@ function App() {
 
 	const switchPage = () => {
 		if (switchPages === 0) {
-			return <SignIn setSwitchPages={setSwitchPages} createPlayer={createPlayer} />
+			return <SignIn setSwitchPages={setSwitchPages} createPlayer={createPlayer} playersData={allPlayers}/>
 
 		}
 		else if (switchPages === 1) {
@@ -82,6 +94,7 @@ function App() {
 
 	return (
 		<div className="App">
+		
 			{switchPage()}
 		</div>
 	);
