@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import Table from './Table'
 
 export default function SignIn(props) {
 	const [name, setName] = useState('')
@@ -18,26 +19,16 @@ export default function SignIn(props) {
 
 	console.log(props);
 
-
-
-
-
-
 	return (
-		<div className='conteiner'>
-			<div className='table'>
-				<ul className='players'>
-					<li>Player</li>
-				{props.playersData.map((obj, index)=>(
-					<li key={index}>{obj.playerName}</li>
-				))}
-			</ul>
+		<div className='conteiner move'>
 
-			</div>
 			<div className='signIn' >
-				<h1>READY FOR WAR</h1>
+			<Table playersData = {props.playersData}/>
+				<div className='enter' >
+				<h1 style={{fontSize:"40px", color:"#e84e43", position:'relative',bottom:"60px" }}>READY FOR WAR</h1>
 				<input className='nameInput' onChange={(e) => { setName(e.target.value) }} type="text" placeholder='enter your name' />
 				<button className='start Btn' onClick={checkName}>START</button>
+				</div>
 			</div>
 		</div>
 	)

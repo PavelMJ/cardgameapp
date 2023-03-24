@@ -8,22 +8,30 @@
 }
 .conteiner{
 	display: flex;
+	align-items: center;
+	height: 1009px;
 }
 
-.table{
-	width: 200px;
 
-	color: aliceblue;
-	border: solid 2px rgb(255, 255, 255);
-}
 
 .signIn{
-	width:400px ;
-	height: 400px;
+	width:fit-content ;
+	height: fit-content;
 	justify-content: center;
-	margin: 150px;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	border-radius: 10px;
+	background-color: rgb(176, 176, 176);
+}
+
+.enter{
+	width:fit-content ;
+	height: fit-content;
+	/* justify-content: center; */
 	display: flex;
 	flex-flow: column;
+	margin: 50px;
 	align-items: center;
 	border-radius: 10px;
 	background-color: rgb(176, 176, 176);
@@ -32,17 +40,22 @@
 .Btn{
 	cursor: pointer;
 	margin: 10px;
-	width: 30%;
-	height: 25px;
+	width: 60%;
+	height: 32px;
 	background-color: rgb(47, 156, 252);
 	border-radius: 10px;
 	border: none;
+	color: azure;
 }
 
 .nameInput{
-	width: 70%;
-	height: 30px;
+	text-align: center;
+	font-size: 18px;
+	position: relative;
+	width: 100%;
+	height: 35px;
 	border-radius: 10px;
+	bottom: 35px;
 }
 
 .Card{
@@ -63,7 +76,7 @@
 	display: flex;
 	flex-flow: column;
 	align-items: center;
-	height: 1000px;
+	height: 1009px;
 }
 
 img{
@@ -72,4 +85,29 @@ img{
 }
 
 
+.players{
+	list-style-type:none;
+}
+
+.table{
+	font-size: 20px;
+	display: flex;
+	width: fit-content;
+	height: 300px;
+	padding: 0 30px 0 0;
+	color: aliceblue;
+	background-color: rgb(57, 57, 57);
+	border-radius: 8px 0 0 8px;
+	bottom: 100px;
+
+}
+
+.data{
+	text-align: right;
+}
+
+.move{
+	position: relative;
+	bottom: 200px;
+}
 

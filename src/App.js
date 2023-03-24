@@ -12,7 +12,7 @@ import Score from './components/Score'
 
 function App() {
 
-	const [switchPages, setSwitchPages] = useState(0)
+	const [switchPages, setSwitchPages] = useState(2)
 	const [player, setPlayer] = useState({})
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
@@ -85,8 +85,8 @@ function App() {
 			return <GamePage setSwitchPages={setSwitchPages} player={player} compDeck={compDeck} playerDeck={playerDeck} />
 
 		}
-		else if (switchPages === 3) {
-			return <Score setSwitchPages={setSwitchPages} />
+		else if (switchPages === 2) {
+			return <Score setSwitchPages={setSwitchPages} playersData={allPlayers}/>
 		}
 
 
