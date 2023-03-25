@@ -14,9 +14,12 @@
 }
 
 .table{
+	display: flex;
 	width: 200px;
+	list-style: none;
 
 
+}
 .signIn {
 	width: 400px;
 	height: 400px;
@@ -67,6 +70,8 @@
 }
 
 .title {
+	
+
 	position: relative;
 
 	color: aliceblue;
