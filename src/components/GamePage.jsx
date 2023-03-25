@@ -7,7 +7,6 @@ export default function GamePage(props) {
 	const [index, setIndex] = useState(0)
 	const [comPoint, setcomPoint] = useState(0)
 	const [playerPoint, setPlayerPoint] = useState(0)
-	const [move, setMove] = useState(25)
 
 	const progres = () => {
 
@@ -27,16 +26,16 @@ export default function GamePage(props) {
 			props.setSwitchPages(2)
 			props.setAllPlayers([...props.allPlayers, props.player])
 			if(comPoint>playerPoint){
-				props.setResul("lose")
+				props.setResul(`SORRY ${props.player.playerName} YOU LOSE`)
 			}
 			else{
-				props.setResul('win')
+				props.setResul(`CONGRATULATION ${props.player.playerName}  YOU WIN`)
 			}
 		}
 	
 
 		setIndex(index + 1)
-		setMove(move - 1)
+		props.setMove(props.move - 1)
 
 
 	}
@@ -59,27 +58,17 @@ export default function GamePage(props) {
 			setPlayerPoint(playerPoint - 1)
 		}
 
-		if (move === 26) {
+		if (props.move === 26) {
 			props.setSwitchPages(0)
 		}
 
 		setIndex(index - 1)
-		setMove(move + 1)
+		props.setMove(props.move + 1)
 	}
 
 
-
-	// const sendCardToComp = () => {
-	// 	return props.compDeck[index]
-	// }
-
-	// const sendCardToPlayer = () => {
-	// 	return props.playerDeck[index]
-	// }
-
 	return (
 		<div className='GamePage col'>
-			<div className='title moves'>Only{move}moves left</div>
 			<div className='Game'>
 				<div className='col'>
 					<h1 className='title COMP' >COMPUTER</h1>

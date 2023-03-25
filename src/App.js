@@ -17,6 +17,8 @@ function App() {
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
 	const [result, setResul] = useState('')
+	const [move, setMove] = useState(25)
+
 
 	const [allPlayers, setAllPlayers] = useState([
 	])
@@ -31,9 +33,12 @@ function App() {
 		setPlayer({ playerName: userName, win: 0, lose: 0, games: 1 })
 		createGame()
 	}
+
+
 	// useEffect(()=>{
 	// 	setAllPlayers(data)
 	// },[allPlayers])
+
 
 	const createGame = () => {
 
@@ -73,9 +78,14 @@ function App() {
 		setCompDeck([...comDeck])
 	}
 
+	const goHome = () => {
+		setSwitchPages(0)
+	}
+
 
 	const switchPage = () => {
 		if (switchPages === 0) {
+
 			return <SignIn setSwitchPages={setSwitchPages} createPlayer={createPlayer} playersData={allPlayers} />
 
 		}
@@ -89,24 +99,49 @@ function App() {
 				setAllPlayers={setAllPlayers}
 				result={result}
 				setResul={setResul}
-				 />
+				move={move}
+				setMove={setMove}
+			/>
 
 		}
 		else if (switchPages === 2) {
-			return <Score 
-			setSwitchPages={setSwitchPages}
-			 playersData={allPlayers}
-			 result={result}
-			 player={player}
-			 
-			 />
+
+			return <Score
+				setSwitchPages={setSwitchPages}
+				playersData={allPlayers}
+				result={result}
+				player={player}
+
+			/>
+		}
+	}
+
+	const showInfo = () => {
+		if (switchPages === 0) {
+			return <div className='info'>READY FOR WAR</div>
+		}
+		if (switchPages === 1) {
+
+			return <div className='info'>Only ${move} moves left</div> 
 		}
 
+		if (switchPages === 2) {
+			return <div style={{fontSize: "18px"}} className='info'>result</div>
+		}
 
 	}
 
+
+
 	return (
 		<div className="App">
+
+			<div className='Header'>
+
+				<img onClick={goHome} className='homeBtn' style={{ margin: '10px', cursor: "pointer" }} src='/img/home.svg' alt="home" />
+				{showInfo()}
+				<h2 className='title'>@</h2>
+			</div>
 
 			{switchPage()}
 		</div>
