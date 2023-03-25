@@ -12,7 +12,7 @@ import Score from './components/Score'
 
 function App() {
 
-	const [switchPages, setSwitchPages] = useState(2)
+	const [switchPages, setSwitchPages] = useState(0)
 	const [player, setPlayer] = useState({})
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
