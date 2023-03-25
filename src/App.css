@@ -10,18 +10,32 @@
 .conteiner {
 	display: flex;
 	align-items: center;
-	height: 1009px;
+	/* justify-content: center; */
+	height: 700px;
 }
 
 .table{
+	position: relative;
 	display: flex;
-	width: 200px;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
 	list-style: none;
+	height: 100%;
+	background-color: rgb(60, 60, 60);
+	right: 20px;
+	border-radius: 8px 0 0 8px;
 
 
 }
+
+.players{
+	color: aliceblue;
+	list-style: none;
+	text-align:right ;
+}
 .signIn {
-	width: 400px;
+	width: 750px;
 	height: 400px;
 	justify-content: center;
 	display: flex;
@@ -55,9 +69,12 @@
 }
 
 .nameInput {
-	width: 70%;
+	font-size: 16px;
+	position: relative;
+	width: 90%;
 	height: 30px;
 	border-radius: 10px;
+	bottom: 20px;
 }
 
 .Card {
@@ -143,4 +160,13 @@ img {
 	flex-flow: column;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.score{
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	width: 900px;
+	height: 300px;
+	left: 250px;
 }

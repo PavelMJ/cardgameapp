@@ -25,7 +25,15 @@ export default function GamePage(props) {
 
 		if (index === 25) {
 			props.setSwitchPages(2)
+			props.setAllPlayers([...props.allPlayers, props.player])
+			if(comPoint>playerPoint){
+				props.setResul("lose")
+			}
+			else{
+				props.setResul('win')
+			}
 		}
+	
 
 		setIndex(index + 1)
 		setMove(move - 1)
@@ -51,16 +59,12 @@ export default function GamePage(props) {
 			setPlayerPoint(playerPoint - 1)
 		}
 
-		if (index === 0) {
+		if (move === 26) {
 			props.setSwitchPages(0)
 		}
 
 		setIndex(index - 1)
 		setMove(move + 1)
-
-		
-
-
 	}
 
 

@@ -16,14 +16,16 @@ function App() {
 	const [player, setPlayer] = useState({})
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
+	const [result, setResul] = useState('')
+
 	const [allPlayers, setAllPlayers] = useState([
-])
-	useEffect(()=>{
+	])
+	useEffect(() => {
 		fetch('/data.json')
-		.then((responce)=>responce.json())
-		.then((data)=>setAllPlayers(data))
-		.catch((error)=> console.error(error))
-	},[])
+			.then((responce) => responce.json())
+			.then((data) => setAllPlayers(data))
+			.catch((error) => console.error(error))
+	}, [])
 
 	const createPlayer = (userName) => {
 		setPlayer({ playerName: userName, win: 0, lose: 0, games: 1 })
@@ -72,21 +74,32 @@ function App() {
 	}
 
 
-
-
-
-
 	const switchPage = () => {
 		if (switchPages === 0) {
-			return <SignIn setSwitchPages={setSwitchPages} createPlayer={createPlayer} playersData={allPlayers}/>
+			return <SignIn setSwitchPages={setSwitchPages} createPlayer={createPlayer} playersData={allPlayers} />
 
 		}
 		else if (switchPages === 1) {
-			return <GamePage setSwitchPages={setSwitchPages} player={player} compDeck={compDeck} playerDeck={playerDeck} />
+			return <GamePage
+				setSwitchPages={setSwitchPages}
+				player={player}
+				compDeck={compDeck}
+				playerDeck={playerDeck}
+				allPlayers={allPlayers}
+				setAllPlayers={setAllPlayers}
+				result={result}
+				setResul={setResul}
+				 />
 
 		}
 		else if (switchPages === 2) {
-			return <Score setSwitchPages={setSwitchPages} playersData={allPlayers}/>
+			return <Score 
+			setSwitchPages={setSwitchPages}
+			 playersData={allPlayers}
+			 result={result}
+			 player={player}
+			 
+			 />
 		}
 
 
@@ -94,7 +107,7 @@ function App() {
 
 	return (
 		<div className="App">
-		
+
 			{switchPage()}
 		</div>
 	);
