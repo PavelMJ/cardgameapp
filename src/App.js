@@ -17,7 +17,7 @@ function App() {
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
 	const [result, setResul] = useState(true)
-	const [move, setMove] = useState(25)
+	const [move, setMove] = useState(0)
 
 
 	const [allPlayers, setAllPlayers] = useState([
@@ -74,6 +74,7 @@ function App() {
 
 		}
 
+		setMove(25)
 		setplayeDeck([...playDeck])
 		setCompDeck([...comDeck])
 	}
@@ -93,6 +94,7 @@ function App() {
 			return <GamePage
 				setSwitchPages={setSwitchPages}
 				player={player}
+				setPlayer={setPlayer}
 				compDeck={compDeck}
 				playerDeck={playerDeck}
 				allPlayers={allPlayers}
@@ -111,6 +113,8 @@ function App() {
 				playersData={allPlayers}
 				result={result}
 				player={player}
+				createGame={createGame}
+
 
 			/>
 		}
