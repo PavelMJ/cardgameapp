@@ -16,7 +16,7 @@ function App() {
 	const [player, setPlayer] = useState({})
 	const [compDeck, setCompDeck] = useState([])
 	const [playerDeck, setplayeDeck] = useState([])
-	const [result, setResul] = useState('')
+	const [result, setResul] = useState(true)
 	const [move, setMove] = useState(25)
 
 
@@ -118,15 +118,19 @@ function App() {
 
 	const showInfo = () => {
 		if (switchPages === 0) {
-			return <div className='info'>READY FOR WAR</div>
+			return <div className='info'>READY FOR <span style={{color:"red"}}>WAR</span> </div>
 		}
 		if (switchPages === 1) {
 
-			return <div className='info'>Only ${move} moves left</div> 
+			return <div className='info'>Only {move} moves left</div> 
 		}
 
 		if (switchPages === 2) {
-			return <div style={{fontSize: "18px"}} className='info'>result</div>
+			if(result)
+			return <div style={{color:"red",fontSize: "25px"}} className='info'>CONGRTULATION <span style={{fontSize: "35px", color: 'white'}}>{player.playerName}</span> YOU WON! </div>
+			else{
+				return <div style={{color:"red",fontSize: "25px"}} className='info'>SORRY <span style={{fontSize: "35px",color: 'white'}}>{player.playerName}</span> YOU LOST!</div>
+			}
 		}
 
 	}

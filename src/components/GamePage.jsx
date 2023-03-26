@@ -9,6 +9,8 @@ export default function GamePage(props) {
 	const [playerPoint, setPlayerPoint] = useState(0)
 
 	const progres = () => {
+		setIndex(index + 1)
+		props.setMove(props.move - 1)
 
 		if (props.compDeck[index].value > props.playerDeck[index].value) {
 			setcomPoint(comPoint + 1)
@@ -23,47 +25,69 @@ export default function GamePage(props) {
 		}
 
 		if (index === 25) {
+			props.setMove(0)
 			props.setSwitchPages(2)
-			props.setAllPlayers([...props.allPlayers, props.player])
-			if(comPoint>playerPoint){
-				props.setResul(`SORRY ${props.player.playerName} YOU LOSE`)
+			let temp =props.allPlayers.findIndex(val=> val.playerName===props.player.playerName)
+			if(temp ===-1){
+				props.setAllPlayers([...props.allPlayers, props.player])
 			}
 			else{
-				props.setResul(`CONGRATULATION ${props.player.playerName}  YOU WIN`)
+				let temp = props.allPlayers.map((val)=>{
+					if(val.playerName===props.player.playerName){
+						for(let i =1; i<val.length; i++){
+							val[i]+=props.player[i]
+						}
+					}
+					return val
+				})
+				props.setAllPlayers([...temp])
+			}
+		
+			
+			if (comPoint > playerPoint) {
+				props.setResul(false)
+			}
+			else {
+				props.setResul(true)
 			}
 		}
-	
 
-		setIndex(index + 1)
-		props.setMove(props.move - 1)
+
+
 
 
 	}
 
 	const moveBack = () => {
-		
+		if (index < 1) {
+			return
 
-		if (props.compDeck[index-1].value > props.playerDeck[index-1].value) {
+		}
+
+
+		if (props.compDeck[index - 1].value > props.playerDeck[index - 1].value & index > 0) {
 			setcomPoint(comPoint - 1)
 
 
 
 		}
-		else if (props.compDeck[index-1].value < props.playerDeck[index-1].value) {
+		else if (props.compDeck[index - 1].value < props.playerDeck[index - 1].value & index > 0) {
 			setPlayerPoint(playerPoint - 1)
 
 		}
-		else {
+		else if (props.compDeck[index - 1].value === props.playerDeck[index - 1].value & index > 0) {
 			setcomPoint(comPoint - 1)
 			setPlayerPoint(playerPoint - 1)
-		}
-
-		if (props.move === 26) {
-			props.setSwitchPages(0)
 		}
 
 		setIndex(index - 1)
 		props.setMove(props.move + 1)
+
+
+
+
+
+
 	}
 
 
