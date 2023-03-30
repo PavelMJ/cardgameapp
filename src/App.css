@@ -205,8 +205,8 @@ img {
 	flex-flow: column;
 	align-items: center;
 	justify-content: center;
-	width: 900px;
-	height: 300px;
+	width: fit-content;
+	height: fit-content;
 	bottom: 100px;
 }
 

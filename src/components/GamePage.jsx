@@ -13,8 +13,11 @@ export default function GamePage(props) {
 		let temp = props.allPlayers.findIndex(val => val.playerName === props.player.playerName)
 		console.log(props.player);
 		if (temp === -1) {
-			props.setAllPlayers([...props.allPlayers, props.player])
-			console.log(props.allPlayers)
+			let temp2 = props.allPlayers
+			temp2.sort((a, b)=> b.win - a.win)
+			props.setAllPlayers([...temp2, props.player])
+			
+			
 		}
 		else {
 			let temp2 = props.allPlayers.map((val) => {
@@ -26,6 +29,7 @@ export default function GamePage(props) {
 				}
 				return val
 			})
+			temp2.sort((a, b)=> b.win -a.win)
 			props.setAllPlayers([...temp2])
 		}
 

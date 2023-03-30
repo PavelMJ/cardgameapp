@@ -18,19 +18,28 @@ function App() {
 	const [playerDeck, setplayeDeck] = useState([])
 	const [result, setResul] = useState(true)
 	const [move, setMove] = useState(0)
+	const [allPlayers, setAllPlayers] = useState([])
 
 
-	const [allPlayers, setAllPlayers] = useState([
-	])
+
+	
 	useEffect(() => {
 		fetch('/data.json')
 			.then((responce) => responce.json())
-			.then((data) => setAllPlayers(data))
+			.then((data) =>{
+			data.sort((b,a)=>a.win -b.win)
+
+			return setAllPlayers(data)})
 			.catch((error) => console.error(error))
 	}, [])
 
+
+	// useEffect(()=>{
+	// 	setAllPlayers(prev=>allPlayers.sort((b,a)=> a.win -b.win))
+	// },[])
+
 	const createPlayer = (userName) => {
-		setPlayer({ playerName: userName, win: 0, lose: 0, games: 1 })
+		setPlayer({ playerName: userName, win: 0, lose: 0, games: 0 })
 		createGame()
 	}
 
@@ -131,7 +140,7 @@ function App() {
 
 		if (switchPages === 2) {
 			if(result)
-			return <div style={{color:"red",fontSize: "25px"}} className='info'>CONGRTULATION <span style={{fontSize: "35px", color: 'white'}}>{player.playerName}</span> YOU WON! </div>
+			return <div style={{color:"red",fontSize: "25px"}} className='info'>GOOD JOB <span style={{fontSize: "35px", color: 'white'}}>{player.playerName}</span> YOU WON! </div>
 			else{
 				return <div style={{color:"red",fontSize: "25px"}} className='info'>SORRY <span style={{fontSize: "35px",color: 'white'}}>{player.playerName}</span> YOU LOST!</div>
 			}
